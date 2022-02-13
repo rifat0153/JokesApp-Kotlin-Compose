@@ -8,18 +8,23 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.jokesapp.screens.destinations.QuizScreenDestination
+import com.example.jokesapp.screens.home.HomeViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Destination(start = true)
 @Composable
-fun HomeScreen(navigator: DestinationsNavigator) {
+fun HomeScreen(
+    navigator: DestinationsNavigator,
+) {
     Column(
         modifier = Modifier.fillMaxSize(),
         verticalArrangement = Arrangement.Center,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
+        horizontalAlignment = Alignment.CenterHorizontally,
+
+        ) {
         Text(text = "HomeScreen")
 
         Button(

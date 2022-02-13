@@ -10,7 +10,9 @@ import androidx.compose.ui.Modifier
 import com.example.jokesapp.screens.NavGraphs
 import com.example.jokesapp.ui.theme.JokesAppTheme
 import com.ramcosta.composedestinations.DestinationsNavHost
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
