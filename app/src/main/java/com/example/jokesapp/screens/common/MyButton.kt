@@ -54,14 +54,14 @@ fun MyOutlinedButton(
     height: Int = 8,
     width: Int = 35,
     cornerRadius: Int = 30,
-    textColor: Color = Color.White,
+    textColor: Color = com.example.jokesapp.ui.theme.Button,
     fontWeight: FontWeight = FontWeight.Bold,
     textStyle: TextStyle = MaterialTheme.typography.h5,
 ) {
     OutlinedButton(
         onClick = onClick,
         colors = ButtonDefaults.buttonColors(backgroundColor),
-        border = BorderStroke(1.dp, MaterialTheme.colors.primary),
+        border = BorderStroke(1.dp, com.example.jokesapp.ui.theme.Button),
         shape = RoundedCornerShape(cornerRadius),
         modifier = Modifier
             .height(kPadding * height)
