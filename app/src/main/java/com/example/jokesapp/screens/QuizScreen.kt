@@ -9,6 +9,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.jokesapp.screens.destinations.QuizDetailScreenDestination
 import com.example.jokesapp.screens.home.HomeState
 import com.example.jokesapp.screens.home.HomeViewModel
@@ -21,6 +22,7 @@ fun QuizScreen(
     navigator: DestinationsNavigator,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
+//    val viewModel = viewModel<HomeViewModel>()
 
     val state = viewModel.state.value
 
