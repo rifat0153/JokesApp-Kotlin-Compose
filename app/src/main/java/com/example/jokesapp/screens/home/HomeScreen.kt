@@ -12,18 +12,18 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.Navigation
+import androidx.navigation.compose.NavHost
 import com.example.jokesapp.R
 import com.example.jokesapp.screens.common.MyButton
 import com.example.jokesapp.screens.common.MyOutlinedButton
-import com.example.jokesapp.screens.destinations.QuizScreenDestination
 import com.example.jokesapp.ui.theme.kPadding
-import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
-@Destination(start = true)
+
 @Composable
 fun HomeScreen(
-    navigator: DestinationsNavigator,
+    navController: NavController
 ) {
 
 
@@ -47,14 +47,14 @@ fun HomeScreen(
         Text(text = "HomeScreen")
 
         MyButton(text = "Play now", onClick = {
-            navigator.navigate(QuizScreenDestination)
+            navController.navigate(R.id.action_homeFragment_to_quizFragment)
         })
         
         Spacer(modifier = Modifier.height(kPadding * 4))
 
         MyOutlinedButton(
             text = "About", onClick = {
-                navigator.navigate(QuizScreenDestination)
+                navController.navigate(R.id.action_homeFragment_to_quizFragment)
             },
         )
 

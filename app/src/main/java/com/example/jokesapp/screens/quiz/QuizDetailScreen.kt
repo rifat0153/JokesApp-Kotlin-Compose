@@ -4,13 +4,13 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
-import com.ramcosta.composedestinations.annotation.Destination
-import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+//import com.ramcosta.composedestinations.annotation.Destination
+//import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
-@Destination
+//@Destination
 @Composable
 fun QuizDetailScreen(
-    navigator: DestinationsNavigator,
+//    navigator: DestinationsNavigator,
     name: String = ""
 ) {
 
@@ -19,7 +19,7 @@ fun QuizDetailScreen(
 
         Button(
             onClick = {
-                navigator.navigateUp()
+//                navigator.navigateUp()
             }
         ) {
             Text(text = "Goto Quiz Screen")
