@@ -1,25 +1,26 @@
 package com.example.jokesapp.screens
 
-import androidx.compose.foundation.*
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.navigation.NavController
-import com.example.jokesapp.R
 import com.example.jokesapp.screens.common.MyButton
 import com.example.jokesapp.screens.common.MyOutlinedButton
-import com.example.jokesapp.ui.theme.Purple700
 import com.example.jokesapp.ui.theme.kPadding
+import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
-
+@Destination(start = true)
 @Composable
 fun HomeScreen(
-    navController: NavController
+    navController: DestinationsNavigator
 ) {
-
 
     Column(
         modifier = Modifier
@@ -30,25 +31,17 @@ fun HomeScreen(
         horizontalAlignment = Alignment.CenterHorizontally,
 
         ) {
-//        Image(
-//            painterResource(R.drawable.ic_homescreen_img),
-//            contentDescription = "",
-//            contentScale = ContentScale.Crop,
-//            modifier = Modifier.height(1000.dp)
-//        )
 
-        
         Text(text = "HomeScreen")
 
         MyButton(text = "Play now", onClick = {
-            navController.navigate(R.id.action_homeFragment_to_quizFragment)
         })
-        
+
         Spacer(modifier = Modifier.height(kPadding * 4))
 
         MyOutlinedButton(
-            text = "About", onClick = {
-                navController.navigate(R.id.action_homeFragment_to_quizFragment)
+            text = "About",
+            onClick = {
             },
         )
 

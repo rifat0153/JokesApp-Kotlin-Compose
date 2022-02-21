@@ -8,15 +8,16 @@ import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import com.example.jokesapp.R
-import androidx.navigation.NavController
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.jokesapp.screens.home.HomeState
 import com.example.jokesapp.screens.home.HomeViewModel
+import com.ramcosta.composedestinations.annotation.Destination
 
+@Destination
 @Composable
 fun QuizScreen(
-    viewModel: HomeViewModel,
-    navController: NavController
+    viewModel: HomeViewModel = hiltViewModel(),
+
 ) {
 
     val state = viewModel.state.value
@@ -26,7 +27,7 @@ fun QuizScreen(
 
         Button(
             onClick = {
-                navController.navigate(R.id.action_quizFragment_to_quizDetailFragment)
+//                navController.navigate(R.id.action_quizFragment_to_quizDetailFragment)
             }
         ) {
             Text(text = "Goto Quiz Screen")
