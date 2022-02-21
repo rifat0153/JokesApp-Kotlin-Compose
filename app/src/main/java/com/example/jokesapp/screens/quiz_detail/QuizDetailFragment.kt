@@ -1,23 +1,22 @@
-package com.example.jokesapp.screens.quiz
+package com.example.jokesapp.screens.quiz_detail
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.compose.material.Text
 import androidx.compose.ui.platform.ComposeView
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
-import com.example.jokesapp.screens.QuizScreen
+import com.example.jokesapp.screens.home.HomeState
 import com.example.jokesapp.screens.home.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class QuizFragment: Fragment() {
-    private val viewModel: HomeViewModel by activityViewModels()
-//    private val viewModel by viewModels<HomeViewModel>()
+class QuizDetailFragment : Fragment() {
 
+    private val viewModel: HomeViewModel by activityViewModels()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -26,8 +25,18 @@ class QuizFragment: Fragment() {
     ): View? {
         return ComposeView(requireContext()).apply {
             setContent {
-                QuizScreen(viewModel = viewModel, navController = findNavController())
+                val state = viewModel.state.value
+
+                when (state) {
+                    is HomeState.Loading -> Text(text = "Loading")
+                    is HomeState.Error -> Text(text = state.error)
+                    is HomeState.Success -> {
+                        Text(text = state.questions.size.toString())
+                    }
+                }
             }
         }
     }
+
+
 }
