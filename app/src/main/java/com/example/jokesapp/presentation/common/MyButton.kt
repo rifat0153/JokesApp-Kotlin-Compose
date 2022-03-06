@@ -1,4 +1,4 @@
-package com.example.jokesapp.screens.common
+package com.example.jokesapp.presentation.common
 
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.height

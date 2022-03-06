@@ -1,4 +1,4 @@
-package com.example.jokesapp.screens.home
+package com.example.jokesapp.presentation.home
 
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf

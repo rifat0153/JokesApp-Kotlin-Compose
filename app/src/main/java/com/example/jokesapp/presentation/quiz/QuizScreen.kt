@@ -1,4 +1,4 @@
-package com.example.jokesapp.screens
+package com.example.jokesapp.presentation
 
 
 import androidx.compose.foundation.layout.Column
@@ -9,8 +9,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.jokesapp.screens.home.HomeState
-import com.example.jokesapp.screens.home.HomeViewModel
+import com.example.jokesapp.presentation.home.HomeState
+import com.example.jokesapp.presentation.home.HomeViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 
 @Destination
@@ -22,12 +22,12 @@ fun QuizScreen(
 
     val state = viewModel.state.value
 
-    Column(modifier = Modifier.padding(horizontal = 8.dp)) {
+    Column(modifier = Modifier.padding(16.dp)) {
         Text(text = "Quiz List Screen")
 
         Button(
             onClick = {
-//                navController.navigate(R.id.action_quizFragment_to_quizDetailFragment)
+
             }
         ) {
             Text(text = "Goto Quiz Screen")

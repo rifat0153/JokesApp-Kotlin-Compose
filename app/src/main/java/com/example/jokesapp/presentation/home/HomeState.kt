@@ -1,4 +1,4 @@
-package com.example.jokesapp.screens.home
+package com.example.jokesapp.presentation.home
 
 import com.example.jokesapp.models.Question
 

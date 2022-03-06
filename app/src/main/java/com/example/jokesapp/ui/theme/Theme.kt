@@ -11,6 +11,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 val kPadding = 8.dp;
+val kRadius = 8.dp;
 
 
 private val DarkColorPalette = darkColors(
