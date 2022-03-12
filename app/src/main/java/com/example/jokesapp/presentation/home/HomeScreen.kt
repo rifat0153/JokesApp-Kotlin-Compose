@@ -1,9 +1,12 @@
-package com.example.jokesapp.presentation
+package com.example.jokesapp.presentation.home
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
@@ -13,10 +16,10 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.jokesapp.R
@@ -34,12 +37,35 @@ fun HomeScreen(
     navController: DestinationsNavigator
 ) {
 
+    val scrollState = rememberScrollState()
+
     Column(
-        modifier = Modifier.fillMaxSize(),
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(scrollState),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        ChipImageTile()
+        ChipImageTile(
+            background = Color.Magenta,
+            title = "Science",
+            subTitle = "Level 2",
+            iconImage = painterResource(R.drawable.air_hot_balloon)
+        )
+
+        ChipImageTile(
+            background = Color.Blue,
+            title = "Earth",
+            subTitle = "Level 4",
+            iconImage = painterResource(R.drawable.earth)
+        )
+
+        ChipImageTile(
+            background = Color.Blue,
+            title = "General",
+            subTitle = "Level 4",
+            iconImage = painterResource(R.drawable.books)
+        )
 
         Text(text = "HomeScreen", style = TextStyle(color = Color.Black))
 
@@ -61,7 +87,14 @@ fun HomeScreen(
 }
 
 @Composable
-fun ChipImageTile(modifier: Modifier = Modifier) {
+fun ChipImageTile(
+    modifier: Modifier = Modifier,
+    background: Color,
+    title: String,
+    subTitle: String,
+    iconImage: Painter
+) {
+
     Box(
         Modifier
             .fillMaxWidth()
@@ -73,7 +106,7 @@ fun ChipImageTile(modifier: Modifier = Modifier) {
             modifier = Modifier
                 .fillMaxWidth()
                 .clip(shape = RoundedCornerShape(kRadius * 2))
-                .background(Color.Magenta)
+                .background(background)
                 .align(Alignment.BottomCenter)
         ) {
 
@@ -86,9 +119,9 @@ fun ChipImageTile(modifier: Modifier = Modifier) {
                     imageVector = Icons.Filled.PlayArrow, contentDescription = "icon",
                     modifier = Modifier.size(30.dp)
                 )
-                Text(text = "level 2")
+                Text(text = subTitle)
                 Text(
-                    text = "Science", style = TextStyle(
+                    text = title, style = TextStyle(
                         color = Color.White,
                         fontWeight = FontWeight.Bold,
                         fontSize = 20.sp
@@ -100,18 +133,24 @@ fun ChipImageTile(modifier: Modifier = Modifier) {
 
 
         Image(
-            painter = painterResource(R.drawable.air_hot_balloon),
+            painter = iconImage,
             contentDescription = "Icon Image",
             modifier = Modifier
                 .height(120.dp)
-                .width(120.dp).padding(end = 16.dp)
+                .width(120.dp)
+                .padding(end = 16.dp)
                 .align(Alignment.TopEnd)
         )
     }
 }
 
-@Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
-@Composable
-fun JokeImageTilePreview() {
-    ChipImageTile()
-}
+//@Preview(showBackground = true, backgroundColor = 0xFFFFFFFF)
+//@Composable
+//fun JokeImageTilePreview() {
+//    ChipImageTile(
+//        background = Color.Magenta,
+//        title = "Science",
+//        subTitle = "Level 2",
+//        iconImage = painterResource(R.drawable.air_hot_balloon)
+//    )
+//}
