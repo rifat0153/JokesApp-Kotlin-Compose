@@ -1,8 +1,9 @@
 package com.example.jokesapp.presentation.home
 
+import androidx.compose.animation.core.animateDpAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
-import androidx.compose.foundation.gestures.scrollable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -11,7 +12,7 @@ import androidx.compose.material.Icon
 import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.PlayArrow
-import androidx.compose.runtime.Composable
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -30,6 +31,7 @@ import com.example.jokesapp.ui.theme.kPadding
 import com.example.jokesapp.ui.theme.kRadius
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
+import kotlinx.coroutines.delay
 
 @Destination(start = true)
 @Composable
@@ -50,21 +52,24 @@ fun HomeScreen(
             background = Color.Magenta,
             title = "Science",
             subTitle = "Level 2",
-            iconImage = painterResource(R.drawable.air_hot_balloon)
+            iconImage = painterResource(R.drawable.air_hot_balloon),
+            animationDelay = 0L
         )
 
         ChipImageTile(
-            background = Color.Blue,
+            background = Color.Green,
             title = "Earth",
             subTitle = "Level 4",
-            iconImage = painterResource(R.drawable.earth)
+            iconImage = painterResource(R.drawable.earth),
+            animationDelay = 100L
         )
 
         ChipImageTile(
             background = Color.Blue,
             title = "General",
             subTitle = "Level 4",
-            iconImage = painterResource(R.drawable.books)
+            iconImage = painterResource(R.drawable.books),
+            animationDelay = 200L
         )
 
         Text(text = "HomeScreen", style = TextStyle(color = Color.Black))
@@ -92,14 +97,28 @@ fun ChipImageTile(
     background: Color,
     title: String,
     subTitle: String,
-    iconImage: Painter
+    iconImage: Painter,
+    animationDelay: Long
 ) {
+
+    val startAnimation = remember { mutableStateOf(false) }
+    val offsetX by animateDpAsState(
+        targetValue = if (startAnimation.value) 0.dp else 500.dp,
+        animationSpec = spring(dampingRatio = 5f)
+    )
+
+    LaunchedEffect(key1 = true) {
+        delay(timeMillis = animationDelay)
+        startAnimation.value = true
+    }
+
 
     Box(
         Modifier
             .fillMaxWidth()
             .height(200.dp)
             .padding(kPadding * 2)
+            .offset(x = offsetX)
     ) {
 
         Box(
