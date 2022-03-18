@@ -48,9 +48,7 @@ fun JokesAppTheme(darkTheme: Boolean = isSystemInDarkTheme(), content: @Composab
 
     MaterialTheme(
         colors = colors,
-        typography = Typography.copy(
-            body1 = TextStyle(color = Color.White, fontSize = 18.sp)
-        ),
+        typography = Typography,
         shapes = Shapes,
         content = content
     )

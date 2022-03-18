@@ -1,29 +1,22 @@
-package com.example.jokesapp.presentation.quiz
-
+package com.example.jokesapp.presentation.menu
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.Button
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.jokesapp.R
 import com.example.jokesapp.presentation.home.HomeState
-import com.example.jokesapp.presentation.home.HomeViewModel
+import com.example.jokesapp.presentation.quiz.ChipImageTile
 import com.ramcosta.composedestinations.annotation.Destination
+import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 
 @Destination
 @Composable
-fun QuizScreen(
-    viewModel: HomeViewModel = hiltViewModel(),
-) {
-
-    val state = viewModel.state.value
-
+fun MenuScreen(navigator: DestinationsNavigator) {
     Column(modifier = Modifier.padding(16.dp)) {
 
         ChipImageTile(
@@ -49,16 +42,5 @@ fun QuizScreen(
             iconImage = painterResource(R.drawable.books),
             animationDelay = 200L
         )
-
-        when (state) {
-            is HomeState.Loading -> Text(text = "Loading")
-            is HomeState.Error -> Text(text = state.error)
-            is HomeState.Success -> {
-                Text(text = state.questions.size.toString())
-            }
-        }
     }
-
 }
-
-
