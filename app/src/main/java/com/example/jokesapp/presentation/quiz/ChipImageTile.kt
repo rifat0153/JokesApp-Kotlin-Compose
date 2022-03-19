@@ -1,9 +1,11 @@
 package com.example.jokesapp.presentation.quiz
 
+import android.util.Log
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Icon
@@ -34,7 +36,8 @@ fun ChipImageTile(
     title: String,
     subTitle: String,
     iconImage: Painter,
-    animationDelay: Long
+    animationDelay: Long,
+    onClick: () -> Unit
 ) {
 
     val startAnimation = remember { mutableStateOf(false) }
@@ -48,13 +51,13 @@ fun ChipImageTile(
         startAnimation.value = true
     }
 
-
     Box(
         Modifier
             .fillMaxWidth()
             .height(200.dp)
             .padding(kPadding * 2)
             .offset(x = offsetX)
+
     ) {
 
         Box(
@@ -63,6 +66,9 @@ fun ChipImageTile(
                 .clip(shape = RoundedCornerShape(kRadius * 2))
                 .background(background)
                 .align(Alignment.BottomCenter)
+                .clickable {
+                    onClick()
+                }
         ) {
 
             Column(
@@ -95,6 +101,10 @@ fun ChipImageTile(
                 .width(120.dp)
                 .padding(end = 16.dp)
                 .align(Alignment.TopEnd)
+                .clickable {
+                    onClick()
+                }
+
         )
     }
 }
@@ -107,6 +117,9 @@ fun ChipTilePreview() {
         title = "Science",
         subTitle = "Level 2",
         iconImage = painterResource(R.drawable.air_hot_balloon),
-        animationDelay = 300L
+        animationDelay = 300L,
+        onClick = {
+
+        }
     )
 }

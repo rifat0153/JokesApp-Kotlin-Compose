@@ -12,51 +12,29 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.jokesapp.R
+import com.example.jokesapp.data.remote.Difficulty
 import com.example.jokesapp.presentation.home.HomeState
 import com.example.jokesapp.presentation.home.HomeViewModel
 import com.ramcosta.composedestinations.annotation.Destination
 
-@Destination
+data class QuizScreenNavArgs(
+    val categoryId: String,
+    val difficulty: Difficulty
+)
+
+@Destination(
+    navArgsDelegate = QuizScreenNavArgs::class
+)
 @Composable
 fun QuizScreen(
-    viewModel: HomeViewModel = hiltViewModel(),
+    viewModel: QuizViewModel = hiltViewModel(),
 ) {
 
-    val state = viewModel.state.value
+    val id = viewModel.id
 
     Column(modifier = Modifier.padding(16.dp)) {
 
-        ChipImageTile(
-            background = Color.Magenta,
-            title = "Science",
-            subTitle = "Level 2",
-            iconImage = painterResource(R.drawable.air_hot_balloon),
-            animationDelay = 0L
-        )
-
-        ChipImageTile(
-            background = Color.Green,
-            title = "Earth",
-            subTitle = "Level 4",
-            iconImage = painterResource(R.drawable.earth),
-            animationDelay = 100L
-        )
-
-        ChipImageTile(
-            background = Color.Blue,
-            title = "General",
-            subTitle = "Level 4",
-            iconImage = painterResource(R.drawable.books),
-            animationDelay = 200L
-        )
-
-        when (state) {
-            is HomeState.Loading -> Text(text = "Loading")
-            is HomeState.Error -> Text(text = state.error)
-            is HomeState.Success -> {
-                Text(text = state.questions.size.toString())
-            }
-        }
+       Text(text = id.toString())
     }
 
 }
