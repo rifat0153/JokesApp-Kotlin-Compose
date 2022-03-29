@@ -1,8 +1,10 @@
 package com.example.jokesapp.presentation.home
 
+import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.verticalScroll
+import androidx.compose.material.Scaffold
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -24,30 +26,36 @@ fun HomeScreen(
 
     val scrollState = rememberScrollState()
 
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .verticalScroll(scrollState),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
+
+    Scaffold(
+        backgroundColor = Color.White
     ) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .verticalScroll(scrollState),
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.Center
+        ) {
 
-        Text(text = "HomeScreen", style = TextStyle(color = Color.Black))
+            Text(text = "HomeScreen", style = TextStyle(color = Color.Black))
 
-        MyButton(text = "Play now", onClick = {
-            navController.navigate(MenuScreenDestination)
-        })
+            MyButton(text = "Play now", onClick = {
+                navController.navigate(MenuScreenDestination)
+            })
 
-        Spacer(modifier = Modifier.height(kPadding * 4))
+            Spacer(modifier = Modifier.height(kPadding * 4))
 
-        MyOutlinedButton(
-            text = "About",
-            onClick = {
+            MyOutlinedButton(
+                text = "About",
+                onClick = {
 
-            },
-        )
+                },
+            )
+        }
     }
 
-
 }
+
+
 

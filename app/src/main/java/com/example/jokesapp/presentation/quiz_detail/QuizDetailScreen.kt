@@ -1,4 +1,4 @@
-package com.example.jokesapp.presentation
+package com.example.jokesapp.presentation.quiz_detail
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.material.Button
